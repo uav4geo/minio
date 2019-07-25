@@ -1,4 +1,4 @@
-module github.com/minio/minio
+module github.com/uav4geo/minio
 
 go 1.12
 
