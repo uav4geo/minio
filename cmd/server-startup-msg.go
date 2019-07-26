@@ -65,10 +65,10 @@ func printStartupMessage(apiEndPoints []string) {
 
 	// Prints `mc` cli configuration message chooses
 	// first endpoint as default.
-	printCLIAccessMsg(strippedAPIEndpoints[0], "myminio")
+	// printCLIAccessMsg(strippedAPIEndpoints[0], "myminio")
 
 	// Prints documentation message.
-	printObjectAPIMsg()
+	// printObjectAPIMsg()
 
 	// SSL is configured reads certification chain, prints
 	// authority and expiry.
@@ -114,28 +114,28 @@ func stripStandardPorts(apiEndpoints []string) (newAPIEndpoints []string) {
 // Prints common server startup message. Prints credential, region and browser access.
 func printServerCommonMsg(apiEndpoints []string) {
 	// Get saved credentials.
-	cred := globalServerConfig.GetCredential()
+	// cred := globalServerConfig.GetCredential()
 
 	// Get saved region.
-	region := globalServerConfig.GetRegion()
+	// region := globalServerConfig.GetRegion()
 
 	apiEndpointStr := strings.Join(apiEndpoints, "  ")
 
 	// Colorize the message and print.
 	logger.StartupMessage(colorBlue("Endpoint: ") + colorBold(fmt.Sprintf(getFormatStr(len(apiEndpointStr), 1), apiEndpointStr)))
-	if isTerminal() && !globalCLIContext.Anonymous {
-		logger.StartupMessage(colorBlue("AccessKey: ") + colorBold(fmt.Sprintf("%s ", cred.AccessKey)))
-		logger.StartupMessage(colorBlue("SecretKey: ") + colorBold(fmt.Sprintf("%s ", cred.SecretKey)))
-		if region != "" {
-			logger.StartupMessage(colorBlue("Region: ") + colorBold(fmt.Sprintf(getFormatStr(len(region), 3), region)))
-		}
-	}
-	printEventNotifiers()
+	// if isTerminal() && !globalCLIContext.Anonymous {
+	// 	logger.StartupMessage(colorBlue("AccessKey: ") + colorBold(fmt.Sprintf("%s ", cred.AccessKey)))
+	// 	logger.StartupMessage(colorBlue("SecretKey: ") + colorBold(fmt.Sprintf("%s ", cred.SecretKey)))
+	// 	if region != "" {
+	// 		logger.StartupMessage(colorBlue("Region: ") + colorBold(fmt.Sprintf(getFormatStr(len(region), 3), region)))
+	// 	}
+	// }
+	// printEventNotifiers()
 
-	if globalIsBrowserEnabled {
-		logger.StartupMessage(colorBlue("\nBrowser Access:"))
-		logger.StartupMessage(fmt.Sprintf(getFormatStr(len(apiEndpointStr), 3), apiEndpointStr))
-	}
+	// if globalIsBrowserEnabled {
+	// 	logger.StartupMessage(colorBlue("\nBrowser Access:"))
+	// 	logger.StartupMessage(fmt.Sprintf(getFormatStr(len(apiEndpointStr), 3), apiEndpointStr))
+	// }
 }
 
 // Prints bucket notification configurations.
